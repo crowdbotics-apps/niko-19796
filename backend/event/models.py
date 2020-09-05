@@ -5,14 +5,21 @@ from django.db import models
 class Category(models.Model):
     "Generated Model"
     description = models.TextField()
-    name = models.CharField(null=True, blank=True, max_length=256,)
+    name = models.CharField(
+        null=True,
+        blank=True,
+        max_length=256,
+    )
 
 
 class VendorDetail(models.Model):
     "Generated Model"
     website = models.URLField()
     description = models.TextField()
-    associated_name = models.TextField(null=True, blank=True,)
+    associated_name = models.TextField(
+        null=True,
+        blank=True,
+    )
     vendor_id = models.ForeignKey(
         "event.Vendor",
         null=True,
@@ -25,8 +32,14 @@ class VendorDetail(models.Model):
 class Schedule(models.Model):
     "Generated Model"
     dateTime = models.DateTimeField()
-    description = models.TextField(null=True, blank=True,)
-    track = models.TextField(null=True, blank=True,)
+    description = models.TextField(
+        null=True,
+        blank=True,
+    )
+    track = models.TextField(
+        null=True,
+        blank=True,
+    )
     location = models.ForeignKey(
         "event.Location",
         null=True,
@@ -38,26 +51,39 @@ class Schedule(models.Model):
 
 class Presenter(models.Model):
     "Generated Model"
-    name = models.CharField(max_length=256,)
-    title = models.CharField(max_length=256,)
+    name = models.CharField(
+        max_length=256,
+    )
+    title = models.CharField(
+        max_length=256,
+    )
     schedule = models.ForeignKey(
-        "event.Schedule", on_delete=models.CASCADE, related_name="presenter_schedule",
+        "event.Schedule",
+        on_delete=models.CASCADE,
+        related_name="presenter_schedule",
     )
 
 
 class Faq(models.Model):
     "Generated Model"
-    title = models.CharField(max_length=256,)
+    title = models.CharField(
+        max_length=256,
+    )
     description = models.TextField()
 
 
 class Sponsor(models.Model):
     "Generated Model"
     name = models.TextField()
-    logo_image = models.SlugField(max_length=50,)
+    logo_image = models.SlugField(
+        max_length=50,
+    )
     sponsor_level = models.TextField()
     presenter = models.BooleanField()
-    website = models.URLField(null=True, blank=True,)
+    website = models.URLField(
+        null=True,
+        blank=True,
+    )
     location = models.ForeignKey(
         "event.Location",
         null=True,
@@ -70,9 +96,19 @@ class Sponsor(models.Model):
 class Vendor(models.Model):
     "Generated Model"
     name = models.TextField()
-    logo_image = models.SlugField(null=True, blank=True, max_length=50,)
-    type = models.TextField(null=True, blank=True,)
-    website = models.URLField(null=True, blank=True,)
+    logo_image = models.SlugField(
+        null=True,
+        blank=True,
+        max_length=50,
+    )
+    type = models.TextField(
+        null=True,
+        blank=True,
+    )
+    website = models.URLField(
+        null=True,
+        blank=True,
+    )
     location = models.ForeignKey(
         "event.Location",
         null=True,
@@ -109,9 +145,20 @@ class Favorites(models.Model):
 
 class Location(models.Model):
     "Generated Model"
-    amenities = models.TextField(null=True, blank=True,)
-    name = models.CharField(null=True, blank=True, max_length=256,)
-    image = models.SlugField(null=True, blank=True, max_length=50,)
+    amenities = models.TextField(
+        null=True,
+        blank=True,
+    )
+    name = models.CharField(
+        null=True,
+        blank=True,
+        max_length=256,
+    )
+    image = models.SlugField(
+        null=True,
+        blank=True,
+        max_length=50,
+    )
 
 
 class MySchedule(models.Model):
